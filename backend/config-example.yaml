@@ -1,0 +1,157 @@
+# 服务器配置
+server:
+  port: 8090
+  host: "127.0.0.1"
+  # 可信反向代理（如 nginx）地址列表；仅来自这些代理的请求才信任
+  # X-Forwarded-For / X-Real-IP 头（用于获取真实客户端 IP，限流防刷）。
+  # 未使用反向代理时留空即可；nginx 与后端同机部署时填 ["127.0.0.1"]
+  trustedProxies: []
+
+# 跨域配置
+cors:
+  # 允许跨域访问的来源白名单（完整 Origin，如 "https://blog.example.com"）。
+  # 留空表示不开放跨域；同源访问（浏览器直接访问同一域名）不受影响。
+  origins: []
+
+# 定时备份配置
+backup:
+  enabled: true        # 是否启用每周数据库备份
+  cron: "0 0 4 * * 1"  # 6 段 cron 表达式（含秒）：每周一 04:00 执行
+  dir: "backups"       # 备份保存目录（storage 相对目录，可改为如 "data/backups"）
+  # 备份内容：全部数据表导出为 CSV 后压缩为 zip，经 storage 保存到 dir 目录
+
+# 应用配置
+app:
+  env: "development" # development/production
+  debug: true
+  timezone: "Asia/Shanghai"
+
+
+# jwt 配置
+# 注意：生产环境（app.env=production）启动时会校验密钥强度，
+# 弱密钥（如 "secret"/"change-me"）或长度 < 16 位会拒绝启动。
+jwt:
+  secret: "secret"
+  issuer: "issuer"
+  expiration: 3600 # 1 hour； 单位：秒
+  refreshExpiration: 604800 # 7 days
+
+# 日志配置
+log:
+  level: "debug"
+  format: "text" # text/json
+  output: "logs"
+  outputFileName: "app.log"
+  rotate: true
+  rotateType: "time" # size/time
+  rotateInterval: 1 # 1 day
+  maxSize: 100 # 100MB
+  maxAge: 90 # 90 days 最多保存90天日志
+  stdout: true
+
+# 数据库配置
+db:
+  driver: "sqlite" # mysql, postgres 或 sqlite; 根据driver配置对应 driverName 字段
+  mysql:
+    host: "localhost"
+    port: 3306
+    username: "root"
+    password: "password"
+    database: "test_db"
+    charset: "utf8mb4"
+    parseTime: true
+    loc: "Asia/Shanghai"
+    maxOpenConns: 100
+    maxIdleConns: 20
+    connMaxLifetime: 300s
+
+  postgres:
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    password: "2233"
+    database: "test1"
+    sslmode: "disable"
+    timezone: "Asia/Shanghai"
+    maxOpenConns: 100
+    maxIdleConns: 20
+    connMaxLifetime: 300s
+
+  sqlite:
+    path: "./data.db"
+    foreign_keys: true
+    maxOpenConns: 1
+    maxIdleConns: 1
+    connMaxLifetime: 300s
+
+# 缓存配置
+cache:
+  driver: "redis" # redis 或 memory; 根据driver配置对应 driverName 字段
+  redis:
+    host: "localhost"
+    port: 6379
+    password: ""
+    db: 0
+    connMaxLifetime: 300 # 连接最大存活时间，单位：秒
+    maxOpenConnections: 100
+    idleTimeout: 300 # 连接空闲超时时间，单位：秒
+    maxIdleConnections: 10
+    readTimeout: 20
+    writeTimeout: 20
+    waitTimeout: 1000 # 等待连接池返回连接的最大时长，单位：毫秒
+
+  memory:
+    cleanupInterval: 300 # 清理过期缓存的时间间隔，0表示不自动清理；单位：秒
+
+# 验证码配置
+captcha:
+  length: 6 # 验证码长度
+  expiry: 180 # 验证码过期时间，单位：秒
+
+  # 选择使用什么方式发送验证码
+  option: "email" # email/sms
+
+  # 邮件验证码配置
+  emailSubject: "邮箱验证"
+  emailTemplate: "static/templates/captcha.html" # 验证码邮件模板文件路径
+
+  # 短信验证码配置; 没有实现
+  smsSubject: "短信验证码"
+  smsTemplate: "static/templates/sms_captcha.text" # 验证码短信模板文件路径
+
+# smtp 邮件服务配置
+email:
+  host: "smtp.qq.com"
+  port: 465
+  senderName: "senderName"
+  sender: "noreply@123.com"
+  password: "password"
+  insecureSkipVerify: true # 是否跳过 SSL 证书验证
+
+# 用户管理配置
+user:
+  masterUsername: "master"
+  masterPassword: "masterPassword"
+  masterEmail: "master@123.com"
+  masterPhone: "" # 手机号码
+  bcryptCost: 12 # bcrypt 加密强度，数字越大越安全，建议 10 以上
+  lockDays: 1 # 注销前锁定用户的天数，单位：天
+
+
+# 文件存储配置
+storage:
+  type: "oss"  # local/oss; 根据type配置对应 Name 字段
+  local:
+    basePath: "static/uploads" # 上传文件存储路径
+    baseUrl: "" # 上传文件访问路径, 留空则使用 "/uploads"
+  oss:
+    accessKey: "YOUR_ACCESS_KEY"
+    secretKey: "YOUR_SECRET_KEY"
+    bucket: "my-bucket"
+    # S3: endpoint 地址（如 https://oss-cn-hangzhou.aliyuncs.com）
+    endpoint: "https://oss-cn-hangzhou.aliyuncs.com"
+    # S3: 存储区域（如 cn-hangzhou）
+    region: ""
+    # 自定义域名 / CDN 加速域名（GetURL 拼接用）
+    baseUrl: ""
+    useHttps: false

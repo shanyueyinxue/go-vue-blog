@@ -1,0 +1,247 @@
+/* ============================================================
+ * 主题变量文件（浅色 / 深色两套主题）
+ * ------------------------------------------------------------
+ * 所有主题相关颜色都集中在这里，修改下面的变量即可调整整站配色，
+ * 无需改动 main.css / theme.css 里的样式规则。
+ *
+ * 主题切换：在 <html> 上设置 data-theme="light" 或 data-theme="dark"。
+ *   - :root 中为浅色主题（默认）
+ *   - [data-theme='dark'] 中为深色主题覆盖
+ * 由前端 useTheme 组合式函数负责读写 localStorage 并应用到 <html>。
+ * ============================================================ */
+
+/* ------------------------- 浅色主题（默认） ------------------------- */
+:root {
+  /* ===== 博客前台（blog-*） ===== */
+  --blog-bg: #f6f8fa;                 /* 页面背景 */
+  --blog-surface: #ffffff;            /* 卡片/面板背景 */
+  --blog-text: #1e3e3f;               /* 正文文字 */
+  --blog-text-inverse: #ffffff;       /* 渐变按钮/高亮上的文字 */
+  --blog-muted: #5c6b72;              /* 次要文字 */
+  --blog-muted-strong: #999999;       /* 页码等弱化按钮文字 */
+  --blog-primary: #66afef;            /* 主色调（链接/标题） */
+  --blog-primary-strong: #3392ff;     /* 主色调强调（hover） */
+  --blog-accent: #a3ddfb;             /* 浅蓝强调（表头/加载圈） */
+  --blog-pink: #ffbbf4;               /* 粉色点缀 */
+  --blog-border: #cdd8e2;             /* 通用边框 */
+  --blog-border-light: #d9e8ff;       /* 浅边框（卡片/分页/评论） */
+  --blog-border-dark: #d0d7de;        /* 输入框边框 */
+  --blog-shadow: 0 0 20px #d9d9d980;  /* 卡片阴影 */
+  --blog-shadow-hover: 0 0 5px #d9d9d9; /* 卡片 hover 阴影 */
+  --blog-gradient: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%);      /* 主渐变（按钮） */
+  --blog-gradient-135: linear-gradient(135deg, #9abbf7, #ffbbf4);          /* 135° 渐变（头像/友链图标） */
+  --blog-gradient-scrollbar: linear-gradient(45deg, #8ab5ff, #ffbbf4);     /* 滚动条渐变 */
+  --blog-btn-glow: rgba(155, 187, 247, 0.48);      /* 主按钮 hover 光晕 */
+  --blog-btn-glow-pink: rgba(255, 187, 244, 0.48); /* 粉色光晕 */
+
+  /* 顶部导航 */
+  --blog-nav-bg: #92cafa;             /* 导航栏背景 */
+  --blog-nav-shadow: 0 -1px 10px 0 rgba(158, 158, 158, 0.3);
+  --blog-nav-overlay: rgba(0, 0, 0, 0.2); /* 导航半透明态/遮罩 */
+  --blog-nav-text: #555555;           /* 导航文字 */
+  --blog-nav-input-bg: rgba(255, 255, 255, 0.85); /* 导航搜索框背景 */
+
+  /* Hero 首屏 */
+  --blog-hero-card-bg: rgba(255, 255, 255, 0.65); /* 首屏卡片背景 */
+  --blog-hero-loop-bg: #ffffff;       /* 首屏浮动圆环 */
+
+  /* 表单/输入 */
+  --blog-input-bg: #f6f8fa;           /* 输入框背景 */
+  --blog-input-focus-bg: #ffffff;     /* 输入框聚焦背景 */
+  --blog-focus-ring: rgba(9, 105, 218, 0.3); /* 聚焦光环 */
+
+  /* 正文辅助元素 */
+  --blog-code-bg: rgba(189, 220, 247, 0.42);   /* 行内代码背景 */
+  --blog-blockquote-bg: rgba(217, 232, 255, 0.42); /* 引用背景 */
+  --blog-table-head: #a3ddfb;         /* 表格表头背景 */
+  --blog-table-stripe-odd: rgba(217, 232, 255, 0.3);  /* 表格奇数列 */
+  --blog-table-stripe-even: rgba(199, 224, 251, 0.3); /* 表格偶数列 */
+  --blog-pre-bg: #ffffff;             /* 代码块背景 */
+  --blog-pre-border: #ebeef5;         /* 代码块边框 */
+  --blog-pre-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); /* 代码块阴影 */
+
+  /* 代码高亮（highlight.js 词法颜色，浅色主题 GitHub 风格） */
+  --hljs-base: #24292e;               /* 默认文字 */
+  --hljs-keyword: #d73a49;            /* keyword / type / 模板变量 */
+  --hljs-title: #6f42c1;              /* 函数 / 类名 */
+  --hljs-attr: #005cc5;               /* 属性 / 数字 / 字面量 / 变量 / 运算符 */
+  --hljs-string: #032f62;             /* 字符串 / 正则 */
+  --hljs-builtin: #e36209;            /* 内建函数 / 符号 */
+  --hljs-comment: #6a737d;            /* 注释 */
+  --hljs-name: #22863a;               /* 标签名 / 选择器 */
+  --hljs-section: #005cc5;            /* 标题 */
+  --hljs-bullet: #735c0f;             /* 列表符号 */
+  --hljs-emphasis: #24292e;           /* 斜体 */
+  --hljs-strong: #24292e;             /* 加粗 */
+  --hljs-addition-fg: #22863a;        /* 新增 */
+  --hljs-addition-bg: #f0fff4;
+  --hljs-deletion-fg: #b31d28;        /* 删除 */
+  --hljs-deletion-bg: #ffeef0;
+
+  /* 其它 */
+  --blog-side-avatar-border: #f1f1f1; /* 侧栏头像描边 */
+  --blog-side-link-border: #cdcdcd;   /* 侧栏链接分隔线 */
+  --blog-footer-border: #aaaaaa;      /* 页脚分隔线 */
+  --blog-scrollbar-track: #e6efff;    /* 滚动条轨道 */
+  --blog-modal-mask: rgba(0, 0, 0, 0.3);     /* 弹窗遮罩 */
+  --blog-modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); /* 弹窗阴影 */
+
+  /* ===== 字体（修改后全站同步，含后台 Element Plus 组件） ===== */
+  --font-family-sans: Lexend, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* ===== 后台管理（color-*） ===== */
+  --color-background: #f5f6f8;        /* 页面背景 */
+  --color-surface: #ffffff;           /* 卡片/面板背景 */
+  --color-text: #2c3e50;              /* 正文文字 */
+  --color-text-light: #6b7280;        /* 次要文字 */
+  --color-border: #e5e7eb;            /* 边框 */
+  --color-primary: #2563eb;           /* 主色 */
+  --color-primary-dark: #1d4ed8;      /* 主色 hover */
+  --color-on-primary: #ffffff;        /* 主色背景上的文字 */
+  --color-danger: #dc2626;
+  --color-danger-dark: #b91c1c;
+  --color-danger-strong: #991b1b;
+  --color-danger-bg: #fee2e2;
+  --color-danger-border: #fecaca;
+  --color-success: #16a34a;
+  --color-success-strong: #166534;
+  --color-success-bg: #dcfce7;
+  --color-success-border: #bbf7d0;
+  --color-warning: #d97706;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fde68a;
+  --color-info-bg: #f3f4f6;
+  --color-primary-bg: #eef2ff;        /* 主色浅背景（徽标） */
+  --color-primary-border: #dbeafe;
+  --color-table-head: #f9fafb;        /* 表头背景 */
+  --color-code-bg: #f1f5f9;           /* 行内代码背景 */
+  --color-blockquote-bg: #f8fafc;     /* 引用背景 */
+  --color-pre-bg: #1e293b;            /* 代码块背景 */
+  --color-pre-text: #e2e8f0;          /* 代码块文字 */
+  --color-focus-ring: rgba(37, 99, 235, 0.15); /* 聚焦光环 */
+
+  /* 后台布局（深色侧栏固定） */
+  --color-admin-dark: #1f2937;        /* 侧栏/顶栏深色背景 */
+  --color-admin-topbar-text: #f9fafb; /* 顶栏文字 */
+  --color-admin-nav-text: #d1d5db;    /* 导航文字 */
+  --color-admin-nav-hover: #374151;   /* 导航 hover */
+  --color-admin-header-bg: #ffffff;   /* 顶栏背景 */
+  --color-admin-main-bg: #f6f8fa;     /* 内容区背景 */
+
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ------------------------- 深色主题 ------------------------- */
+[data-theme='dark'] {
+  /* ===== 博客前台（blog-*） ===== */
+  --blog-bg: #12161c;
+  --blog-surface: #1c222b;
+  --blog-text: #e2e8f0;
+  --blog-text-inverse: #ffffff;
+  --blog-muted: #94a3b8;
+  --blog-muted-strong: #8b98a9;
+  --blog-primary: #7cb8f5;
+  --blog-primary-strong: #4d9ef0;
+  --blog-accent: #2d4a6b;
+  --blog-pink: #d99fd8;
+  --blog-border: #2d3745;
+  --blog-border-light: #2b3547;
+  --blog-border-dark: #3a4556;
+  --blog-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+  --blog-shadow-hover: 0 0 8px rgba(0, 0, 0, 0.6);
+  --blog-gradient: linear-gradient(120deg, #3d6fb8 0%, #a85f9e 100%);
+  --blog-gradient-135: linear-gradient(135deg, #3d6fb8, #a85f9e);
+  --blog-gradient-scrollbar: linear-gradient(45deg, #3d6fb8, #a85f9e);
+  --blog-btn-glow: rgba(77, 158, 240, 0.4);
+  --blog-btn-glow-pink: rgba(169, 95, 158, 0.4);
+
+  --blog-nav-bg: #1a2230;
+  --blog-nav-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.5);
+  --blog-nav-overlay: rgba(0, 0, 0, 0.35);
+  --blog-nav-text: #cbd5e1;
+  --blog-nav-input-bg: rgba(20, 26, 34, 0.85);
+
+  --blog-hero-card-bg: rgba(28, 34, 43, 0.75);
+  --blog-hero-loop-bg: #2a3a52;
+
+  --blog-input-bg: #141a22;
+  --blog-input-focus-bg: #1c222b;
+  --blog-focus-ring: rgba(77, 158, 240, 0.3);
+
+  --blog-code-bg: rgba(59, 86, 130, 0.35);
+  --blog-blockquote-bg: rgba(59, 86, 130, 0.3);
+  --blog-table-head: #2d4a6b;
+  --blog-table-stripe-odd: rgba(70, 100, 150, 0.18);
+  --blog-table-stripe-even: rgba(70, 100, 150, 0.25);
+  --blog-pre-bg: #141a22;
+  --blog-pre-border: #2d3745;
+  --blog-pre-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.4);
+
+  /* 代码高亮（highlight.js 词法颜色，深色主题 GitHub Dark 风格） */
+  --hljs-base: #c9d1d9;
+  --hljs-keyword: #ff7b72;
+  --hljs-title: #d2a8ff;
+  --hljs-attr: #79c0ff;
+  --hljs-string: #a5d6ff;
+  --hljs-builtin: #ffa657;
+  --hljs-comment: #8b949e;
+  --hljs-name: #7ee787;
+  --hljs-section: #1f6feb;
+  --hljs-bullet: #f2cc60;
+  --hljs-emphasis: #c9d1d9;
+  --hljs-strong: #c9d1d9;
+  --hljs-addition-fg: #aff5b4;
+  --hljs-addition-bg: #033a16;
+  --hljs-deletion-fg: #ffdcd7;
+  --hljs-deletion-bg: #67060c;
+
+  --blog-side-avatar-border: #2d3745;
+  --blog-side-link-border: #2d3745;
+  --blog-footer-border: #2d3745;
+  --blog-scrollbar-track: #232b38;
+  --blog-modal-mask: rgba(0, 0, 0, 0.6);
+  --blog-modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  /* ===== 后台管理（color-*） ===== */
+  --color-background: #12161c;
+  --color-surface: #1c222b;
+  --color-text: #e2e8f0;
+  --color-text-light: #94a3b8;
+  --color-border: #2d3745;
+  --color-primary: #4d9ef0;
+  --color-primary-dark: #3b82d6;
+  --color-on-primary: #ffffff;
+  --color-danger: #f87171;
+  --color-danger-dark: #ef4444;
+  --color-danger-strong: #fca5a5;
+  --color-danger-bg: rgba(248, 113, 113, 0.12);
+  --color-danger-border: rgba(248, 113, 113, 0.3);
+  --color-success: #34d399;
+  --color-success-strong: #86efac;
+  --color-success-bg: rgba(52, 211, 153, 0.12);
+  --color-success-border: rgba(52, 211, 153, 0.3);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251, 191, 36, 0.12);
+  --color-warning-border: rgba(251, 191, 36, 0.3);
+  --color-info-bg: #232b38;
+  --color-primary-bg: rgba(77, 158, 240, 0.14);
+  --color-primary-border: rgba(77, 158, 240, 0.3);
+  --color-table-head: #232b38;
+  --color-code-bg: #232b38;
+  --color-blockquote-bg: #1a212b;
+  --color-pre-bg: #0d1117;
+  --color-pre-text: #c9d4e3;
+  --color-focus-ring: rgba(77, 158, 240, 0.2);
+
+  --color-admin-dark: #10141a;
+  --color-admin-topbar-text: #e2e8f0;
+  --color-admin-nav-text: #9aa7b8;
+  --color-admin-nav-hover: #2d3745;
+  --color-admin-header-bg: #1c222b;
+  --color-admin-main-bg: #12161c;
+
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}

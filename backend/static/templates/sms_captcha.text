@@ -1,0 +1,6 @@
+【{{.Username}}】您正在进行{{.Subject}}，
+验证码：{{.Code}}
+有效期{{.Expiry}} 秒。
+将在{{.ValidMinutes}}分钟后失效。
+{{.Note}}
+如非本人操作请忽略。

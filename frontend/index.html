@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="个人博客，记录生活、学习、工作中的感悟、心得与经验。">
+    <meta name="keywords" content="个人博客,技术博客,学习笔记,生活感悟,经验分享">
+    <meta name="author" content="我的博客">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="我的博客">
+    <meta property="og:title" content="我的博客">
+    <meta property="og:description" content="个人博客，记录生活、学习、工作中的感悟、心得与经验。">
+    <meta property="og:locale" content="zh_CN">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="我的博客">
+    <meta name="twitter:description" content="个人博客，记录生活、学习、工作中的感悟、心得与经验。">
+
+    <title>我的博客</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "我的博客",
+      "description": "个人博客，记录生活、学习、工作中的感悟、心得与经验。",
+      "inLanguage": "zh-CN"
+    }
+    </script>
+  </head>
+  <body>
+    <!-- 主应用挂载点 -->
+    <div id="app"></div>
+    <!-- 独立 Vue 实例挂载点（main.ts 入口执行后立即渲染 loading，
+         覆盖资源加载/配置预取/首屏数据阶段；完成后由 main.ts unmount） -->
+    <div id="app-loading"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
